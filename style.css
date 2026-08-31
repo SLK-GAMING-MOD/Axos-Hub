@@ -109,9 +109,66 @@ body {
     border-color: var(--text-main); color: var(--text-main);
 }
 
+/* Khung Tìm Kiếm */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    position: relative;
+    animation: silk-in 0.8s var(--silk) forwards;
+}
+
+#search-input {
+    width: 100%;
+    padding: 16px 45px 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-family: var(--font-code);
+    font-size: 14px;
+    outline: none;
+    transition: all 0.4s var(--silk);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#search-input::placeholder {
+    color: var(--text-muted);
+}
+
+#search-input:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+    font-size: 16px;
+}
+
+/* Lỗi không tìm thấy */
+.no-result {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-muted);
+    font-family: var(--font-code);
+    padding: 40px;
+    font-size: 15px;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+}
+
 /* Animations */
 .silk-reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s var(--silk); }
 .silk-reveal.visible { opacity: 1; transform: translateY(0); }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes silk-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 13px; font-family: var(--font-code); border-top: 1px solid var(--border); }
