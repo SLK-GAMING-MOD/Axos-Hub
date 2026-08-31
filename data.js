@@ -5,7 +5,7 @@ const scriptsData = [
         description: "Bản executor dành cho mobile, hỗ trợ anti ban siêu mạnh.",
         primaryBtn: {
             label: "Download Apk",
-            link: "https://github.com/SLK-GAMING-MOD"
+            link: "https://link4m.net/MmhCX3g"
         },
         secondaryBtn: null
     },
