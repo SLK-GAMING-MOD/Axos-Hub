@@ -42,6 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Ghép đường dẫn ảnh: nếu là link http(s) thì giữ nguyên,
+    // còn lại (chỉ tên file) thì tự lấy từ folder "Image/" trong repo
+    function resolveImagePath(image) {
+        if (/^https?:\/\//i.test(image)) return image;
+        return `Image/${image}`;
+    }
+
     // Render danh sách card từ 1 mảng dữ liệu bất kỳ (dùng cho cả render đầu và kết quả tìm kiếm)
     function renderCards(list) {
         container.innerHTML = "";
@@ -64,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             card.innerHTML = `
                 <div class="card-img-wrapper">
-                    <img src="${item.image}" alt="${item.title}">
+                    <img src="${resolveImagePath(item.image)}" alt="${item.title}" onerror="this.onerror=null;this.src='Image/placeholder.png';">
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">${item.title}</h3>
