@@ -1,7 +1,10 @@
+// Dữ liệu hiển thị (Admin edit tại đây)
+// Ảnh: dùng link http(s)... như bình thường, HOẶC chỉ ghi tên file
+//      (vd: "delta.png") nếu ảnh đã bỏ sẵn trong folder "Image" của repo
 const scriptsData = [
     {
         title: "Delta x General",
-        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop",
+        image: "1788172132333.jpg",
         description: "Bản executor dành cho mobile, hỗ trợ anti ban siêu mạnh.",
         primaryBtn: {
             label: "Download Apk",
