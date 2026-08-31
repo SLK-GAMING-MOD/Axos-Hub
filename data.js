@@ -32,7 +32,7 @@ const scriptsData = [
         },
         secondaryBtn: {
             label: "Tải Apk 2",
-            action: "link","
+            action: "link",
             data: "https://link4m.org/ZETQV"
         }
     }
