@@ -1,18 +1,13 @@
-// Dữ liệu hiển thị (Admin edit tại đây)
 const scriptsData = [
     {
-        title: "Động Sói Hub",
+        title: "Delta x General",
         image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop",
-        description: "Script Hub đa năng phát triển trên nền tảng Luau. Tích hợp ESP, Aimbot và các tính năng tối ưu FPS cho game sinh tồn.",
+        description: "Bản executor dành cho mobile, hỗ trợ anti ban siêu mạnh.",
         primaryBtn: {
-            label: "Mở Link Tải",
+            label: "Download Apk",
             link: "https://github.com/SLK-GAMING-MOD"
         },
-        // Nút thứ 2 (tuỳ chọn) - Thích hợp để người dùng copy Loadstring
-        secondaryBtn: {
-            label: "Copy Script",
-            action: "copy", // Logic copy sẽ được xử lý trong app.js
-            data: "loadstring(game:HttpGet('https://raw.githubusercontent.com/SLK-GAMING-MOD/Dong-Soi-Hub/main/source.lua'))()"
+        secondaryBtn: null
         }
     },
     {
@@ -23,7 +18,7 @@ const scriptsData = [
             label: "Xem Source",
             link: "#"
         },
-        secondaryBtn: null // Nếu không cần nút 2, để null
+        secondaryBtn: null
     },
     {
         title: "WindUI Custom Theme",
