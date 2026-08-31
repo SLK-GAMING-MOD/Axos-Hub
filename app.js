@@ -95,10 +95,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 1. Render toàn bộ dữ liệu ban đầu
+    // 1. Kích hoạt hiệu ứng reveal cho các phần tử ngoài card-container (hero, thanh search)
+    document.querySelectorAll('.silk-reveal').forEach((el) => {
+        if (!container.contains(el)) revealObs.observe(el);
+    });
+
+    // 2. Render toàn bộ dữ liệu ban đầu
     renderCards(scriptsData);
 
-    // 2. Xử lý tìm kiếm realtime
+    // 3. Xử lý tìm kiếm realtime
     searchInput.addEventListener("input", () => {
         const value = searchInput.value;
         searchClear.classList.toggle("visible", value.length > 0);
