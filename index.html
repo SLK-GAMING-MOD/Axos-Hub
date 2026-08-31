@@ -30,11 +30,15 @@
     </header>
 
     <main class="container">
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="> Nhập tên script, hub, module cần tìm..." autocomplete="off">
-            <span class="search-icon">🔍</span>
+        <div class="search-wrap silk-reveal">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search-input" class="search-input" placeholder="Tìm script, hub, tool...">
+            <button id="search-clear" class="search-clear" title="Xoá tìm kiếm">&times;</button>
         </div>
-
+        <p id="search-empty" class="search-empty" style="display:none;">Không tìm thấy script nào khớp với từ khoá của bạn.</p>
         <div id="card-container" class="card-grid"></div>
     </main>
 

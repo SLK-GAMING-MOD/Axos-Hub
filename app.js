@@ -1,25 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("card-container");
     const searchInput = document.getElementById("search-input");
+    const searchClear = document.getElementById("search-clear");
+    const searchEmpty = document.getElementById("search-empty");
 
-    // Hàm in thẻ ra giao diện
-    function renderCards(data) {
-        container.innerHTML = ""; // Xoá data cũ mỗi lần render lại
+    // Scroll Reveal (dùng chung cho mọi lần render)
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                revealObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.15 });
 
-        if (data.length === 0) {
-            container.innerHTML = `<div class="no-result">> Không tìm thấy dữ liệu nào khớp với từ khóa...</div>`;
-            return;
-        }
+    // Chức năng Copy Script (dành cho nút phụ)
+    function bindCopyButtons() {
+        container.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const codeToCopy = this.getAttribute('data-clipboard');
+                navigator.clipboard.writeText(codeToCopy).then(() => {
+                    const originalText = this.innerText;
+                    this.innerText = "Đã Copy!";
+                    this.style.color = "var(--green)";
+                    this.style.borderColor = "var(--green)";
+                    setTimeout(() => {
+                        this.innerText = originalText;
+                        this.style.color = "";
+                        this.style.borderColor = "";
+                    }, 2000);
+                });
+            });
+        });
+    }
 
-        data.forEach((item, index) => {
+    // Render danh sách card từ 1 mảng dữ liệu bất kỳ (dùng cho cả render đầu và kết quả tìm kiếm)
+    function renderCards(list) {
+        container.innerHTML = "";
+
+        list.forEach((item, index) => {
             const card = document.createElement("div");
-            // Khi search xong thì hiện luôn không cần đợi cuộn chuột nữa
-            card.className = "script-card silk-reveal visible"; 
-            card.style.animationDelay = `${index * 0.05}s`;
+            card.className = "script-card silk-reveal";
+            card.style.transitionDelay = `${index * 0.1}s`; // Stagger animation
 
             // Build HTML cho 2 nút
             let buttonsHTML = `<a href="${item.primaryBtn.link}" target="_blank" class="btn btn-primary">${item.primaryBtn.label}</a>`;
-            
+
             if (item.secondaryBtn) {
                 if (item.secondaryBtn.action === "copy") {
                     buttonsHTML += `<button class="btn btn-secondary copy-btn" data-clipboard="${item.secondaryBtn.data}">${item.secondaryBtn.label}</button>`;
@@ -43,57 +69,46 @@ document.addEventListener("DOMContentLoaded", () => {
             container.appendChild(card);
         });
 
-        // Gắn lại sự kiện Copy Script sau mỗi lần render
-        bindCopyEvents();
+        searchEmpty.style.display = list.length === 0 ? "block" : "none";
+
+        bindCopyButtons();
+        container.querySelectorAll('.silk-reveal').forEach((el) => revealObs.observe(el));
     }
 
-    // Logic Copy Script
-    function bindCopyEvents() {
-        document.querySelectorAll('.copy-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const codeToCopy = this.getAttribute('data-clipboard');
-                navigator.clipboard.writeText(codeToCopy).then(() => {
-                    const originalText = this.innerText;
-                    this.innerText = "Đã Copy!";
-                    this.style.color = "var(--green)";
-                    this.style.borderColor = "var(--green)";
-                    setTimeout(() => {
-                        this.innerText = originalText;
-                        this.style.color = "";
-                        this.style.borderColor = "";
-                    }, 2000);
-                });
-            });
+    // Bỏ dấu tiếng Việt để tìm kiếm không phân biệt có dấu / không dấu
+    function stripDiacritics(str) {
+        return str
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/đ/g, "d")
+            .replace(/Đ/g, "D")
+            .toLowerCase();
+    }
+
+    function filterScripts(keyword) {
+        const kw = stripDiacritics(keyword.trim());
+        if (!kw) return scriptsData;
+
+        return scriptsData.filter(item => {
+            const haystack = stripDiacritics(`${item.title} ${item.description}`);
+            return haystack.includes(kw);
         });
     }
 
-    // 1. Chạy lần đầu khi load web
+    // 1. Render toàn bộ dữ liệu ban đầu
     renderCards(scriptsData);
 
-    // 2. Chức năng Search (Gõ tới đâu lọc tới đó)
-    searchInput.addEventListener("input", (e) => {
-        const keyword = e.target.value.toLowerCase().trim();
-        
-        // Lọc theo Title hoặc Description (không phân biệt hoa/thường)
-        const filteredData = scriptsData.filter(item => 
-            item.title.toLowerCase().includes(keyword) || 
-            item.description.toLowerCase().includes(keyword)
-        );
-        
-        renderCards(filteredData);
+    // 2. Xử lý tìm kiếm realtime
+    searchInput.addEventListener("input", () => {
+        const value = searchInput.value;
+        searchClear.classList.toggle("visible", value.length > 0);
+        renderCards(filterScripts(value));
     });
 
-    // 3. (Tuỳ chọn) Animation mượt mà cho lần cuộn đầu tiên
-    const revealObs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                revealObs.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.silk-reveal').forEach((el) => {
-        revealObs.observe(el);
+    searchClear.addEventListener("click", () => {
+        searchInput.value = "";
+        searchClear.classList.remove("visible");
+        renderCards(scriptsData);
+        searchInput.focus();
     });
 });
