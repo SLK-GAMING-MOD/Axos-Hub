@@ -32,7 +32,8 @@ const scriptsData = [
         },
         secondaryBtn: {
             label: "Tải Apk 2",
-            link: "https://link4m.org/ZETQV"
+            action: "link","
+            data: "https://link4m.org/ZETQV"
         }
     }
 ];
