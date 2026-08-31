@@ -7,7 +7,7 @@ const scriptsData = [
         image: "1788172132333.jpg",
         description: "Bản executor dành cho mobile, hỗ trợ anti ban siêu mạnh.",
         primaryBtn: {
-            label: "Tải Apk",
+            label: "Tải File Roblox",
             link: "https://link4m.net/MmhCX3g"
         },
         secondaryBtn: null
@@ -17,7 +17,7 @@ const scriptsData = [
         image: "1788172132333.jpg",
         description: "Bản executor dành cho mobile, hỗ trợ anti ban siêu mạnh.",
         primaryBtn: {
-            label: "Tải Apk",
+            label: "Tải File Roblox",
             link: "https://link4m.org/DUno9I"
         },
         secondaryBtn: null
@@ -27,11 +27,11 @@ const scriptsData = [
         image: "1788172132333.jpg",
         description: "Bản executor dành cho mobile, hỗ trợ anti ban siêu mạnh.",
         primaryBtn: {
-            label: "Tải Apk 1",
+            label: "Tải File Login",
             link: "https://link4m.net/YBPsU2q3"
         },
         secondaryBtn: {
-            label: "Tải Apk 2",
+            label: "Tải File Roblox",
             action: "link",
             data: "https://link4m.org/ZETQV"
         }
@@ -45,7 +45,7 @@ const scriptsData = [
             link: "https://link4m.net/XpHdkD"
         },
         secondaryBtn: {
-            label: "Tải Roblox Pc",
+            label: "Tải File Roblox",
             action: "link",
             data: "https://zufile.com/download/Xvxkd5E1Y1"
         }
