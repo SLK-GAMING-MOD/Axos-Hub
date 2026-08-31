@@ -8,7 +8,6 @@ const scriptsData = [
             link: "https://github.com/SLK-GAMING-MOD"
         },
         secondaryBtn: null
-        }
     },
     {
         title: "ESP Framework Trực Quan",
