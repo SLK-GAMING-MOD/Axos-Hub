@@ -8,8 +8,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
-<body>
+<body class="gated">
+    <div id="turnstile-gate" class="turnstile-gate">
+        <div class="turnstile-gate-card">
+            <div class="hero-badge">SECURITY CHECK</div>
+            <h2>Xác Minh Truy Cập</h2>
+            <p>Vui lòng xác minh bạn không phải robot để tiếp tục vào Axos Hub.</p>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAEi14FWYoOeA8QGI" data-callback="onTurnstileVerified" data-theme="dark"></div>
+        </div>
+    </div>
+
     <div class="bg-grid"></div>
 
     <nav class="navbar">

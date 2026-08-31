@@ -1,3 +1,11 @@
+// Callback khi Turnstile xác minh thành công (được gọi tự động bởi data-callback trên widget)
+function onTurnstileVerified(token) {
+    const gate = document.getElementById('turnstile-gate');
+    document.body.classList.remove('gated');
+    gate.classList.add('gate-hide');
+    setTimeout(() => gate.remove(), 500);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("card-container");
     const searchInput = document.getElementById("search-input");

@@ -59,6 +59,51 @@ body {
 .hero h1 span { color: var(--cyan); text-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
 .hero-sub { color: var(--text-muted); max-width: 500px; margin: 0 auto; font-size: 16px; }
 
+/* Turnstile Gate — màn hình xác minh trước khi vào web */
+body.gated { overflow: hidden; height: 100vh; }
+body.gated > *:not(#turnstile-gate) { visibility: hidden; }
+
+.turnstile-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: var(--bg);
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 1;
+    transition: opacity 0.5s var(--silk);
+}
+.turnstile-gate.gate-hide { opacity: 0; pointer-events: none; }
+
+.turnstile-gate-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px 30px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+.turnstile-gate-card .hero-badge { margin-bottom: 20px; }
+.turnstile-gate-card h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+.turnstile-gate-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+.cf-turnstile { display: flex; justify-content: center; }
+
 /* Search Bar */
 .search-wrap {
     position: relative;
