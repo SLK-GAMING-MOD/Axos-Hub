@@ -1,7 +1,14 @@
-// Dữ liệu hiển thị (Admin edit tại đây)
-// Ảnh: dùng link http(s)... như bình thường, HOẶC chỉ ghi tên file
-//      (vd: "delta.png") nếu ảnh đã bỏ sẵn trong folder "Image" của repo
 const scriptsData = [
+    {
+        title: "Delta x Font Death Note",
+        image: "1788172132333.jpg",
+        description: "Bản executor dành cho mobile, hỗ trợ anti ban siêu mạnh.",
+        primaryBtn: {
+            label: "Tải File Roblox",
+            link: "https://link4m.net/nqn4qWF"
+        },
+        secondaryBtn: null
+    },
     {
         title: "Delta x General v2.735",
         image: "1788172132333.jpg",
