@@ -20,12 +20,12 @@ const scriptsData = [
         secondaryBtn: null
     },
     {
-        title: "Delta x VNG v2.735",
+        title: "Delta x VNG v2.736",
         image: "1788172132333.jpg",
         description: "Bản executor dành cho mobile, hỗ trợ anti ban siêu mạnh.",
         primaryBtn: {
             label: "Tải File Roblox",
-            link: "https://link4m.org/DUno9I"
+            link: "https://link4m.org/Rg5ENJ"
         },
         secondaryBtn: null
     },
