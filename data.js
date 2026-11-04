@@ -10,12 +10,12 @@ const scriptsData = [
         secondaryBtn: null
     },
     {
-        title: "Delta x General v2.743",
+        title: "Delta x General v2.745",
         image: "1788172132333.jpg",
         description: "Bản executor dành cho mobile, hỗ trợ anti ban siêu mạnh.",
         primaryBtn: {
             label: "Tải File Roblox",
-            link: "https://link4m.org/li9dRor0"
+            link: "https://link4m.org/ba3dk"
         },
         secondaryBtn: null
     },
